@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>自動化デプロイツール</title>
+    <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/jquery.mloading.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/static/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery/jquery.mloading.js"></script>
+    <script type="text/javascript" src="/static/js/files/functions.js"></script>
+</head>
+
+<body>
+    <!-- Top line begins -->
+    <div id="top">
+        <div class="wrapper">
+            <a href="/home" title="" class="logo"><img src="/static/images/icons/logo.png" alt=""></a>
+        </div>
+    </div>
+    <!-- Top line ends -->
+    <!-- Sidebar begins -->
+    <div id="sidebar">
+        <div class="mainNav">
+            <!-- Main nav -->
+            <ul class="nav">
+                <li>
+                    <!--<a href="/home" title="" 　class="active"><img src="/static/images/icons/mainnav/dashboard.png" alt="" /><span>Dashboard</span></a>-->
+                </li>
+                <li>
+                    <a href="/admin" title=""><img src="/static/images/icons/mainnav/forms.png" alt="" /><span>Admin</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Sidebar ends -->
+    <!-- Content begins -->
+    <div id="content">
+        <div class="contentTop">
+            <span class="pageTitle"><span class="icon-pencil"></span>自動化管理・デプロイ</span>
+        </div>
+        <!-- Breadcrumbs line -->
+        <div class="breadLine">
+            <div class="bc">
+                <ul id="breadcrumbs" class="breadcrumbs">
+                </ul>
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="wrapper">
+            <ul class="middleNavR">
+                <li>
+                    <a href="#" title="Run Ant Build" class="tipN" id="runAntBuild"><img src="/static/images/icons/ant/ant.png" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#" title="Ftp connect test" class="tipN"><img src="/static/images/icons/ant/ftpc.png" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#" title="Move war to ftp" class="tipN"><img src="/static/images/icons/ant/move.png" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#" title="Tomcat shutdown" class="tipN"><img src="/static/images/icons/ant/shutdown.png" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#" title="Tomcat startup" class="tipN"><img src="/static/images/icons/ant/startup.png" alt="" /></a>
+                </li>
+                <li>
+                    <a href="#" title="Recovery" class="tipN"><img src="/static/images/icons/ant/recovery.png" alt="" /></a>
+                </li>
+            </ul>
+            <form action="" class="main">
+                <fieldset>
+                    <div class="widget fluid">
+                        <div class="formRow">
+                            <div class="grid1" style="color:red">
+                                <label>Log:</label>
+                            </div>
+                            <div class="grid11">
+                                <textarea rows="28" cols="" name="textarea" class="auto lim" id="showlog" style="color:blue"></textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+
+                <div class="widget">
+                    <div class="whead">
+                        <h6>war file</h6>
+                        <div class="clear"></div>
+                    </div>
+                    <div id="uploader" style="position: relative;">
+                        <div class="plupload_wrapper plupload_scroll">
+                            <div id="uploader_container" class="plupload_container" title="Using runtime: html5">
+                                <div class="plupload">
+                                    <div class="plupload_content">
+                                        <div class="plupload_filelist_header">
+                                            <div class="plupload_file_name">Filename</div>
+                                            <div class="plupload_file_action">&nbsp;</div>
+                                            <div class="plupload_file_status"><span>create time</span></div>
+                                            <div class="plupload_file_size"></div>
+                                            <div class="plupload_clearer">&nbsp;</div>
+                                        </div>
+                                        <ul id="uploader_filelist" class="plupload_filelist">
+                                        </ul>
+             
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href=""></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Content ends -->
+</body>
+
+</html>
