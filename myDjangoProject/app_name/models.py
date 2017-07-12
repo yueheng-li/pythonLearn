@@ -21,3 +21,5 @@ class EnvironmentVariable(models.Model):
     ftp_ps = models.CharField(max_length=50)
     ftp_war_path = models.CharField(max_length=50)
     ftp_war_back_path = models.CharField(max_length=50)
+    ftp_war_name = models.CharField(max_length=50)
+    ftp_tomcat_log = models.CharField(max_length=50)

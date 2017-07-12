@@ -51,6 +51,7 @@ def extensionFileName():
     fn = os.listdir(path)
     for name in fn:
       if name.find('.war'):
+        d['nm'] = name
         d['path'] = os.path.join(path, name)
         print d['path']
         s = os.stat(d['path'])
