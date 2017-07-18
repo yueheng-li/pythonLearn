@@ -3,14 +3,12 @@
 import subprocess
 import os
 import time
-from app_name.models import Test,EnvironmentVariable
-#cmd = 'cmd.exe C:\\A-LICHUNHUI\\14_python\\test.bat'
 
 
-def callCmdRun(path):
+def callCmdRun(path, goals):
   result = list() 
   bat = path + "run.bat"
-  create(bat)
+  create(bat, path, goals)
   p = subprocess.Popen("cmd.exe /c" + bat, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
   curline = p.stdout.readline()
   result.append("Commond ： \r\n")
@@ -29,22 +27,20 @@ def callCmdRun(path):
   f.close()
   return result  
 
-def create(path):
+def create(path, base_directory, goals):
   if os.path.exists(path):
     print ""
   else:
     try:
-      ev = EnvironmentVariable.objects.get(pk=1)
       f = open(path, 'w')
-      f.write("cd " + ev.base_directory)
+      f.write("cd " + base_directory)
       f.write("\r\n")
-      f.write(ev.goals + " > 1.log")
+      f.write(goals + " > 1.log")
     finally:
       f.close( )
 
-def extensionFileName():
-  ev = EnvironmentVariable.objects.get(pk=1)
-  path = os.path.join(ev.base_directory, "build")
+def extensionFileName(base_directory):
+  path = os.path.join(base_directory, "build")
   print path
   d = {}
   if os.path.exists(path):

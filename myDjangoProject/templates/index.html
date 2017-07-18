@@ -50,32 +50,76 @@
         </div>
         <!-- Main content -->
         <div class="wrapper">
-            <ul class="middleNavR">
-                <li>
-                    <a href="#" title="Run Ant Build" class="tipN" id="runAntBuild"><img src="/static/images/icons/ant/ant.png" alt="" /></a>
-                </li>
-                <!--<li>
-                    <a href="#" title="Ftp connect test" class="tipN"><img src="/static/images/icons/ant/ftpc.png" alt="" /></a>
-                </li>-->
-                <li>
-                    <a href="#" title="Move war to ftp" class="tipN" id="move"><img src="/static/images/icons/ant/move.png" alt="" /></a>
-                </li>
-                <li>
-                    <a href="#" title="Tomcat shutdown" class="tipN" id="stop"><img src="/static/images/icons/ant/shutdown.png" alt="" /></a>
-                </li>
-                <li>
-                    <a href="#" title="Tomcat startup" class="tipN" id="start"><img src="/static/images/icons/ant/startup.png" alt=""/></a>
-                </li>
-                <li>
-                    <a href="#" title="Recovery" class="tipN"><img src="/static/images/icons/ant/recovery.png" alt="" /></a>
-                </li>
-                <li>
-                    <a href="#" title="pstree" class="tipN" id="ps"><img src="/static/images/icons/ant/ps.png" alt="" /></a>
-                </li>
-                <li>
-                    <a href="#" title="reviewing the log" class="tipN" id="log"><img src="/static/images/icons/ant/log.png" alt="" /></a>
-                </li>
-            </ul>
+        
+                    <!-- 6 + 6 -->
+            <div class="fluid">
+                <div class="widget grid4">
+                    <div class="whead"><h6>Profile selects</h6><div class="clear"></div></div>
+                                            
+                    <div class="formRow">
+                        <div class="grid3"><label>Active :</label> </div>
+                        <div class="grid9">
+                            <select style="width:60%" id="env">
+                              <option value="dev">開発</option>
+                              <option value="loc">ロカール</option>
+                              <option value="prod">本番</option>
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="widget grid8">
+                    <ul class="middleNavA">
+                        <li>
+                            <a href="#" title="Run Ant Build" class="tipN" id="runAntBuild">
+                                <img src="/static/images/icons/ant/ant.png" alt="" />
+                                <span>Deploy</span>
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a href="#" title="Ftp connect test" class="tipN"><img src="/static/images/icons/ant/ftpc.png" alt="" /></a>
+                        </li>-->
+                        <li>
+                            <a href="#" title="Move war to ftp and tomcat restart" class="tipN" id="move">
+                                <img src="/static/images/icons/ant/move.png" alt="" />
+                                <span>Release</span>
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a href="#" title="Tomcat shutdown" class="tipN" id="stop"><img src="/static/images/icons/ant/shutdown.png" alt="" /></a>
+                        </li>
+                        <li>
+                            <a href="#" title="Tomcat startup" class="tipN" id="start"><img src="/static/images/icons/ant/startup.png" alt=""/></a>
+                        </li>-->
+                        <li>
+                            <a href="#" title="Recovery" class="tipN" id="recovery">
+                                <img src="/static/images/icons/ant/recovery.png" alt="" />
+                                <span>Recovery</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="pstree" class="tipN" id="ps">
+                                <img src="/static/images/icons/ant/ps.png" alt="" />
+                                <span>Pstree</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="reviewing the log" class="tipN" id="log">
+                                <img src="/static/images/icons/ant/log.png" alt="" />
+                                <span>View log</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clear" style="padding-bottom:10px"></div>
+                    
+                </div>
+
+            </div>
+
+        
+       
+            
             <form action="" class="main">
                 <fieldset>
                     <div class="widget fluid">

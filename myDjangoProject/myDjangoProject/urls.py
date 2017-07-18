@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^start$', view.start),
     url(r'^ps$', view.ps),
     url(r'^log$', view.log),
+    url(r'^recovery$', view.recovery),
     url(r'^search-form$', search.search_form),
     url(r'^static/(?P<path>.*)$',serve,{"document_root":settings.STATICFILES_DIRS}),
 ] 

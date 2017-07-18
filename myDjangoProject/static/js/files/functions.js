@@ -11,12 +11,16 @@ $(function() {
 	};
 
 	$("#runAntBuild").click(function(){
+		var env = $("#env").val();
+		if (!confirmM(env, "本番環境用warファイル作成を行います。よろしいでしょうか？")) {
+			return;
+		}
 		$("body").mLoading({
 		    text:"runing",//加载文字，默认值：加载中...
 		}).show();
-		$.get("/run", function(ret){
+		$.get("/run?env=" + env, function(ret){
             $('#showlog').html(ret)
-            $.get("/war", function(dict){
+            $.get("/war?env=" + env, function(dict){
             	var tag = loadDate(dict);
 				$('#uploader_filelist').html(tag);
             	console.log(dict);
@@ -28,12 +32,16 @@ $(function() {
 
 	// move
 	$("#move").click(function(){
+		var env = $("#env").val();
+		if (!confirmM(env, "本番環境にwarをリリースします。よろしいでしょうか？")) {
+			return;
+		}
 		$("body").mLoading({
-		    text:"moving",//加载文字，默认值：加载中...
+		    text:"moving and tomcat restarting",//加载文字，默认值：加载中...
 		}).show();
 		$.get("/mv", function(ret){
             $('#showlog').html(ret)
-            $.get("/rwar", function(dict){
+            $.get("/rwar?env=" + env, function(dict){
             	var tag = '';
             	for (var i = 0; i < dict.length; i++) {
             		tag += loadDate(dict[i]);
@@ -48,10 +56,11 @@ $(function() {
 
 	// stop
 	$("#stop").click(function(){
+		var env = $("#env").val();
 		$("body").mLoading({
 		    text:"stoping",//加载文字，默认值：加载中...
 		}).show();
-		$.get("/stop", function(ret){
+		$.get("/stop?env=" + env, function(ret){
             $('#showlog').html(ret)
             $("body").mLoading("hide");
         })
@@ -59,10 +68,11 @@ $(function() {
 
 	// start
 	$("#start").click(function(){
+		var env = $("#env").val();
 		$("body").mLoading({
 		    text:"starting",//加载文字，默认值：加载中...
 		}).show();
-		$.get("/start", function(ret){
+		$.get("/start?env=" + env, function(ret){
             $('#showlog').html(ret)
             $("body").mLoading("hide");
         })
@@ -70,10 +80,11 @@ $(function() {
 
 	// pstree
 	$("#ps").click(function(){
+		var env = $("#env").val();
 		$("body").mLoading({
 		    text:"loading",//加载文字，默认值：加载中...
 		}).show();
-		$.get("/ps", function(ret){
+		$.get("/ps?env=" + env, function(ret){
             $('#showlog').html(ret)
             $("body").mLoading("hide");
         })
@@ -81,14 +92,31 @@ $(function() {
 
 	// view log
 	$("#log").click(function(){
+		var env = $("#env").val();
 		$("body").mLoading({
 		    text:"reviewing",//加载文字，默认值：加载中...
 		}).show();
-		$.get("/log", function(ret){
+		$.get("/log?env=" + env, function(ret){
             $('#showlog').html(ret)
             $("body").mLoading("hide");
         })
 	});
+
+	// recovery
+	$("#recovery").click(function(){
+		var env = $("#env").val();
+		if (!confirmM(env, "本番環境にwarを回復します。よろしいでしょうか？")) {
+			return;
+		}
+		$("body").mLoading({
+		    text:"recovering and tomcat restarting",//加载文字，默认值：加载中...
+		}).show();
+		$.get("/recovery?env=" + env, function(ret){
+            $('#showlog').html(ret)
+            $("body").mLoading("hide");
+        })
+	});
+
 });
 
 function loadDate(data) {
@@ -119,4 +147,15 @@ function loadDate(data) {
 	tag += ' <div class="plupload_clearer">&nbsp;</div>';
 	tag += ' </li>';
 	return tag;
+}
+
+function confirmM(env, message) {
+	if (env != 'prod') {
+		return true;
+	}
+	var r=confirm(message)
+	if (r == true) {
+		return true;
+	}
+	return false;
 }
