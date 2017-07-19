@@ -41,15 +41,17 @@ $(function() {
 		}).show();
 		$.get("/mv", function(ret){
             $('#showlog').html(ret)
-            $.get("/rwar?env=" + env, function(dict){
-            	var tag = '';
-            	for (var i = 0; i < dict.length; i++) {
-            		tag += loadDate(dict[i]);
-            	}
-				$('#uploader_filelist').html(tag);
-            	
-            	console.log(dict);
-            });
+            if (ret != "Exec failure!") {
+	            $.get("/rwar?env=" + env, function(dict){
+	            	var tag = '';
+	            	for (var i = 0; i < dict.length; i++) {
+	            		tag += loadDate(dict[i]);
+	            	}
+					$('#uploader_filelist').html(tag);
+	            	
+	            	console.log(dict);
+	            });
+            }
             $("body").mLoading("hide");
         })
 	});

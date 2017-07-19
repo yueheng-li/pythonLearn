@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import paramiko
+import logging
+
 
 class SSHConn:
+	logger = logging.getLogger('scripts')
 
 	def __init__(self, hostname, port, username, password):
 		self.client = paramiko.SSHClient()
@@ -16,7 +19,7 @@ class SSHConn:
 			sftp = paramiko.SFTPClient.from_transport(self.transport)
 			s = sftp.put(localpath=lpath, remotepath=repath)
 		except Exception, e:
-			print e
+			logger.error(e)
 			return 'Exec failure'
 		return s
 
@@ -25,18 +28,19 @@ class SSHConn:
 
 	def execCommand(self, command):
 		try:
-			print command
+			logger.info("command : " + command)
 			stdin, stdout, stderr = self.client.exec_command(command)
 		except Exception, e:
+			logger.error(e)
 			return 'Exec failure'
 		return stdout.read(), stderr.read()
 
 
 	def extensionFileName(remote_dir):
 		d = {}
-		print remote_dir
+		logger.info("remote_dir : " + remote_dir)
 		sftp = paramiko.SFTPClient.from_transport(self.transport)
-		print remote_dir
+		logger.info("remote_dir : " + remote_dir)
 		fn = sftp.listdir(remote_dir) #这里需要注意，列出远程文件必须使用sftp，而不能用os
 		for name in fn:
 			print name
